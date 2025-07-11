@@ -359,12 +359,12 @@
       const minProfitPct = parseFloat(document.getElementById("minProfitPct").value);
       const autoTrade = document.getElementById("autoTradeToggle").checked;
       const batchCount = parseInt(document.getElementById("batchCount").value);
-      let i = 0;
+      // let i = 0;
 
       for (const [symbol, tokenAddr] of Object.entries(tokens)) {
         for (const [buyName, buyRouter] of Object.entries(routers)) {
           for (const [sellName, sellRouter] of Object.entries(routers)) {
-            if (buyName === sellName || ++i > batchCount) continue;
+            if (buyName === sellName) continue;
 
             const usdc = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
             const buyOut = await getPrice(buyRouter, usdc, tokenAddr, tradeAmount);
